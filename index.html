@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroTech Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+  <!-- NAVBAR -->
+  <nav class="bg-green-700 text-white shadow">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">🌱 AgroTech Solutions</h1>
+
+      <!-- Botón hamburguesa (solo en móvil) -->
+      <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
+        ☰
+      </button>
+
+      <!-- Menú -->
+      <div id="menu" class="hidden md:flex space-x-6 flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-green-700 md:bg-transparent p-4 md:p-0">
+        <a href="#login" class="block py-2 hover:text-yellow-300 transition">Login</a>
+        <a href="#sensores" class="block py-2 hover:text-yellow-300 transition">Sensores</a>
+        <a href="#dashboard" class="block py-2 hover:text-yellow-300 transition">Dashboard</a>
+        <a href="#reportes" class="block py-2 hover:text-yellow-300 transition">Reportes</a>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Sprints del Proyecto -->
+  <section id="sprints" class="py-12 bg-white">
+    <h2 class="text-3xl font-bold text-center mb-6"> 🌾 Sprints del Proyecto</h2>
+    <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="bg-green-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <img src="https://content.nationalgeographic.com.es/medio/2020/11/02/agricultura-inteligente_e423adb0_1280x853.jpg" alt="">
+        <h3 class="text-xl font-bold text-green-700 mb-2">Sprint 1</h3>
+        <p class="text-gray-600">Diseño inicial y prototipo de la aplicación.</p>
+      </div>
+      <div class="bg-green-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <img src="https://www.iagua.es/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/58_mag_uso_de_sensores_en_la_agricultura.jpg?itok=vL4fhFB8" alt="">
+        <h3 class="text-xl font-bold text-green-700 mb-2">Sprint 2</h3>
+        <p class="text-gray-600">Implementación de login, sensores y dashboard.</p>
+      </div>
+      <div class="bg-green-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+        <img src="https://agrotechcampus.com/wp-content/uploads/2025/04/Monitoreo-de-cultivos-con-satelites.jpg" alt="">
+        <h3 class="text-xl font-bold text-green-700 mb-2">Sprint 3</h3>
+        <p class="text-gray-600">Reportes, alertas y despliegue en GitHub Pages.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- Login / Registro -->
+<section id="login" class="py-16 bg-gradient-to-r from-green-600 to-green-400 text-white">
+  <div class="max-w-md mx-auto bg-white text-gray-800 p-8 rounded-xl shadow-lg">
+    <h2 class="text-2xl font-bold mb-4 text-center">Registro / Login</h2>
+    <form id="loginForm" class="space-y-4">
+      <input id="nombre" type="text" placeholder="Nombre completo" class="w-full p-3 border rounded-lg" required>
+      <input id="correo" type="email" placeholder="Correo electrónico" class="w-full p-3 border rounded-lg" required>
+      <input id="password" type="password" placeholder="Contraseña" class="w-full p-3 border rounded-lg" required>
+      <select id="rol" class="w-full p-3 border rounded-lg" required>
+        <option value="">Selecciona un rol</option>
+        <option>Administrador</option>
+        <option>Técnico</option>
+        <option>Productor</option>
+      </select>
+      <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">Ingresar</button>
+    </form>
+
+    <!-- Mensaje de login + botón logout -->
+    <div id="loginMsg" class="text-center mt-4 text-green-600 font-bold hidden"></div>
+    <button id="logoutBtn" class="mt-4 w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 hidden">
+      Cerrar sesión
+    </button>
+  </div>
+</section>
+
+
+  <!-- Sensores -->
+  <section id="sensores" class="py-12 container mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-6">📡 Sensores</h2>
+    <div class="bg-white p-6 rounded-xl shadow">
+      <table class="w-full text-left border-collapse" id="tablaSensores">
+        <thead>
+          <tr class="bg-green-100">
+            <th class="p-3">ID</th>
+            <th class="p-3">Nombre</th>
+            <th class="p-3">Tipo</th>
+            <th class="p-3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="p-3">1</td>
+            <td class="p-3">Sensor Humedad</td>
+            <td class="p-3">Humedad</td>
+            <td class="p-3 space-x-2">
+              <button class="bg-blue-500 text-white px-3 py-1 rounded editar">Editar</button>
+              <button class="bg-red-500 text-white px-3 py-1 rounded eliminar">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="p-3">2</td>
+            <td class="p-3">Sensor Temperatura</td>
+            <td class="p-3">Temperatura</td>
+            <td class="p-3 space-x-2">
+              <button class="bg-blue-500 text-white px-3 py-1 rounded editar">Editar</button>
+              <button class="bg-red-500 text-white px-3 py-1 rounded eliminar">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="agregarSensor" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">+ Agregar Sensor</button>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="bg-gray-100 py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">📊 Dashboard en Tiempo Real</h2>
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h3 class="text-xl font-bold text-green-700">Humedad</h3>
+        <p id="humedad" class="text-2xl font-bold">65%</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h3 class="text-xl font-bold text-green-700">Temperatura</h3>
+        <p id="temperatura" class="text-2xl font-bold">24°C</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h3 class="text-xl font-bold text-green-700">pH del Suelo</h3>
+        <p id="ph" class="text-2xl font-bold">6.8</p>
+      </div>
+    </div>
+    <!-- Alertas simuladas -->
+    <div class="max-w-3xl mx-auto mt-8">
+      <div id="alerta" class="bg-red-100 text-red-700 p-4 rounded-lg shadow hidden">
+        🚨 Alerta: La humedad bajó por debajo del rango normal en el lote 3.
+      </div>
+    </div>
+  </section>
+
+  <!-- Reportes -->
+  <section id="reportes" class="py-12 container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">📑 Reportes Históricos</h2>
+    <p class="mb-4">Descarga reportes filtrados por rango de fechas.</p>
+    <button id="pdfBtn" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 mr-3">Descargar PDF</button>
+    <button id="excelBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Descargar Excel</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-700 text-white text-center p-4">
+    <p>&copy; 2025 AgroTech Solutions - Agricultura Inteligente con IoT</p>
+  </footer>
+
+  <!-- Script -->
+
+    <script>
+    // ✅ Nuevo: menú responsive
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("flex");
+      menu.classList.toggle("flex-col");
+      menu.classList.toggle("mt-4");
+    });
+
+  </script>
+  
+
+  <script>
+   // --- LOGIN ---
+const loginForm = document.getElementById("loginForm");
+const loginMsg = document.getElementById("loginMsg");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// Función para validar contraseña segura
+function validarPassword(pass) {
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
+  return regex.test(pass);
+}
+
+// Cargar usuario guardado al iniciar
+window.addEventListener("DOMContentLoaded", () => {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  if (usuarioGuardado) {
+    mostrarBienvenida(usuarioGuardado);
+  }
+});
+
+// Manejo de login
+loginForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value;
+  const password = document.getElementById("password").value;
+  const rol = document.getElementById("rol").value;
+
+  if (!validarPassword(password)) {
+    alert("⚠️ La contraseña debe tener mínimo 8 caracteres, incluyendo letras y números.");
+    return;
+  }
+
+  const usuario = { nombre, correo, rol };
+  localStorage.setItem("usuario", JSON.stringify(usuario));
+
+  mostrarBienvenida(usuario);
+});
+
+// Mostrar bienvenida
+function mostrarBienvenida(usuario) {
+  loginMsg.textContent = `Bienvenido ${usuario.nombre} (${usuario.rol}) 👋`;
+  loginMsg.classList.remove("hidden");
+  logoutBtn.classList.remove("hidden");
+  loginForm.classList.add("hidden");
+}
+
+// Cerrar sesión
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("usuario");
+  loginForm.classList.remove("hidden");
+  loginMsg.classList.add("hidden");
+  logoutBtn.classList.add("hidden");
+});
+
+
+    // Sensores
+    const tabla = document.getElementById("tablaSensores").querySelector("tbody");
+    let contador = 3;
+
+    document.getElementById("agregarSensor").addEventListener("click", () => {
+      const nombre = prompt("Ingrese el nombre del sensor:");
+      const tipo = prompt("Ingrese el tipo de sensor:");
+      if (nombre && tipo) {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td class="p-3">${contador}</td>
+          <td class="p-3">${nombre}</td>
+          <td class="p-3">${tipo}</td>
+          <td class="p-3 space-x-2">
+            <button class="bg-blue-500 text-white px-3 py-1 rounded editar">Editar</button>
+            <button class="bg-red-500 text-white px-3 py-1 rounded eliminar">Eliminar</button>
+          </td>
+        `;
+        tabla.appendChild(fila);
+        contador++;
+      }
+    });
+
+    // Editar y eliminar
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("eliminar")) {
+        e.target.closest("tr").remove();
+      }
+      if (e.target.classList.contains("editar")) {
+        const fila = e.target.closest("tr");
+        const nombre = prompt("Editar nombre:", fila.children[1].textContent);
+        const tipo = prompt("Editar tipo:", fila.children[2].textContent);
+        if (nombre && tipo) {
+          fila.children[1].textContent = nombre;
+          fila.children[2].textContent = tipo;
+        }
+      }
+    });
+
+    // Dashboard - datos aleatorios
+    setInterval(() => {
+      const humedad = Math.floor(Math.random() * 100) + "%";
+      const temperatura = (20 + Math.random() * 10).toFixed(1) + "°C";
+      const ph = (5 + Math.random() * 3).toFixed(1);
+
+      document.getElementById("humedad").textContent = humedad;
+      document.getElementById("temperatura").textContent = temperatura;
+      document.getElementById("ph").textContent = ph;
+
+      const alerta = document.getElementById("alerta");
+      if (parseInt(humedad) < 40) {
+        alerta.classList.remove("hidden");
+      } else {
+        alerta.classList.add("hidden");
+      }
+    }, 3000);
+
+    // Reportes
+    document.getElementById("pdfBtn").addEventListener("click", () => {
+      alert("📑 Generando reporte en PDF...");
+    });
+    document.getElementById("excelBtn").addEventListener("click", () => {
+      alert("📊 Generando reporte en Excel...");
+    });
+  </script>
+
+</body>
+</html>
